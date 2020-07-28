@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Strings related to Settings -->
+    <!-- Section Logging -->
+    <string name="pref_logging_settings_title">Logging</string>
+
+    <bool name="pref_logging_file_enable_default">true</bool>
+    <string name="pref_logging_file_enable_title">Create log file</string>
+    <string name="pref_logging_file_enable_summary">Log received BLE packets to file</string>
+
+    <bool name="pref_logging_aggressive_scan_enable_default">false</bool>
+    <string name="pref_logging_aggressive_scan_enable_title">Aggressive scan</string>
+    <string name="pref_logging_aggressive_scan_enable_summary">Use aggressive mode for BLE device scan</string>
+
+
+    <!-- Section User Interface -->
+    <string name="pref_ui_settings_title">User Interface</string>
+
+    <string-array name="pref_ui_max_age_entries">
+        <item>1 sec</item>
+        <item>3 sec</item>
+        <item>5 sec</item>
+        <item>10 sec</item>
+        <item>30 sec</item>
+        <item>1 min</item>
+        <item>5 min</item>
+        <item>15 min</item>
+        <item>30 min</item>
+        <item>all</item>
+    </string-array>
+    <string-array name="pref_ui_max_age_values">
+        <item>1</item>
+        <item>3</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>300</item>
+        <item>900</item>
+        <item>1800</item>
+        <item>0</item>
+    </string-array>
+    <string name="pref_ui_max_age_default">10</string>
+    <string name="pref_ui_max_age_title">Max device age</string>
+
+    <string-array name="pref_ui_update_interval_entries">
+        <item>100 ms</item>
+        <item>500 ms</item>
+        <item>1 sec</item>
+        <item>5 sec</item>
+        <item>10 sec</item>
+        <item>30 sec</item>
+    </string-array>
+    <string-array name="pref_ui_update_interval_values">
+        <item>100</item>
+        <item>500</item>
+        <item>1000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>30000</item>
+    </string-array>
+    <string name="pref_ui_update_interval_default">1000</string>
+    <string name="pref_ui_update_interval_title">UI update interval</string>
+
+    <bool name="pref_ui_keep_screen_on_default">false</bool>
+    <string name="pref_ui_keep_screen_on_title">Keep screen on</string>
+    <string name="pref_ui_keep_screen_on_summary">Keep screen always on when logging</string>
+
+    <bool name="pref_ui_decode_data_default">false</bool>
+    <string name="pref_ui_decode_data_title">Decode data</string>
+    <string name="pref_ui_decode_data_summary">Display decoded instead of raw advertisement data</string>
+
+    <!-- Section About -->
+    <string name="pref_about_settings_title">App Information</string>
+
+    <string name="pref_about_version_default">not available</string>
+    <string name="pref_about_version_title">Version</string>
+
+    <string name="pref_about_git_revision_default">not available</string>
+    <string name="pref_about_git_revision_title">Git revision</string>
+
+</resources>

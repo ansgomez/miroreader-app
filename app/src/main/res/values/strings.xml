@@ -1,0 +1,88 @@
+<resources>
+    <!-- Strings related to Application -->
+
+    <string name="app_name">MiroTag Reader</string>
+    <string name="title_activity_monitoring">MonitoringActivity</string>
+    <string name="element_text">Beacon Row</string>
+    <string name="placeholder_name">{name}</string>
+    <string name="placeholder_address">{address}</string>
+    <string name="placeholder_data">{data}</string>
+    <string name="placeholder_rssi">{RSSI}</string>
+    <string name="placeholder_timestamp">{timestamp}</string>
+    <string name="placeholder_time">{time}</string>
+    <string name="placeholder_temperature">XX.XX °C</string>
+    <string name="placeholder_humidity">XX.X %RH</string>
+
+    <string name="start_ble_device_scan">Start BLE Scan</string>
+    <string name="stop_ble_device_scan">Stop BLE Scan</string>
+    <string name="start_ble_beacon_scan">Start Beacon Scan</string>
+    <string name="stop_ble_beacon_scan">Stop Beacon Scan</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="dialog_success_ok">OK</string>
+    <string name="ble_filter_label">Filter:</string>
+    <string-array name="ble_filter_entries">
+        <item>all transient nodes</item>
+        <item>no filter(any BLE device)</item>
+        <item>LP#01 (CC:78:AB:70:77:86)</item>
+        <item>LP#02 (24:71:89:07:E4:05)</item>
+        <item>#01 (0C:61:CF:E0:8C:02)</item>
+        <item>#02 (0C:61:CF:E0:62:80)</item>
+        <item>#03 (0C:61:CF:E0:78:06)</item>
+        <item>#04 (0C:61:CF:E0:7F:82)</item>
+        <item>#05 (0C:61:CF:E0:A4:80)</item>
+        <item>#06 (0C:61:CF:E0:9D:02)</item>
+        <item>#07 (0C:61:CF:E0:6E:80)</item>
+        <item>#08 (0C:61:CF:E0:97:02)</item>
+        <item>#09 (0C:61:CF:E0:81:86)</item>
+        <item>#10 (0C:61:CF:E0:A3:04)</item>
+        <item>#11 (0C:61:CF:E0:89:02)</item>
+        <item>#12 (0C:61:CF:E0:74:80)</item>
+        <item>#13 (0C:61:CF:E0:7C:06)</item>
+        <item>#14 (0C:61:CF:E0:83:02)</item>
+        <item>#15 (0C:61:CF:E0:7F:85)</item>
+        <item>#16 (0C:61:CF:E0:9A:05)</item>
+        <item>#17 (0C:61:CF:E0:9D:06)</item>
+        <item>#18 (0C:61:CF:E0:A0:02)</item>
+        <item>#19 (0C:61:CF:E0:9A:02)</item>
+        <item>#20 (0C:61:CF:E0:86:02)</item>
+        <item>#21 (18:04:ED:61:66:51)</item>
+    </string-array>
+    <string-array name="ble_filter_values">
+        <item>all</item>
+        <item></item>
+        <item>CC:78:AB:70:77:86</item>
+        <item>24:71:89:07:E4:05</item>
+        <item>0C:61:CF:E0:8C:02</item>
+        <item>0C:61:CF:E0:62:80</item>
+        <item>0C:61:CF:E0:78:06</item>
+        <item>0C:61:CF:E0:7F:82</item>
+        <item>0C:61:CF:E0:A4:80</item>
+        <item>0C:61:CF:E0:9D:02</item>
+        <item>0C:61:CF:E0:6E:80</item>
+        <item>0C:61:CF:E0:97:02</item>
+        <item>0C:61:CF:E0:81:86</item>
+        <item>0C:61:CF:E0:A3:04</item>
+        <item>0C:61:CF:E0:89:02</item>
+        <item>0C:61:CF:E0:74:80</item>
+        <item>0C:61:CF:E0:7C:06</item>
+        <item>0C:61:CF:E0:83:02</item>
+        <item>0C:61:CF:E0:7F:85</item>
+        <item>0C:61:CF:E0:9A:05</item>
+        <item>0C:61:CF:E0:9D:06</item>
+        <item>0C:61:CF:E0:A0:02</item>
+        <item>0C:61:CF:E0:9A:02</item>
+        <item>0C:61:CF:E0:86:02</item>
+        <item>18:04:ED:61:66:51</item>
+    </string-array>
+
+
+    <!-- Strings related to Scanner Service -->
+    <string name="scanner_notification_title">BLE Scanner</string>
+    <string name="scanner_notification_idle">Open app to start logging</string>
+    <string name="scanner_notification_scan_device">BLE device scan is running</string>
+    <string name="scanner_notification_scan_beacon">BLE beacon scan is running</string>
+    <string name="scanner_notification_channel_name">BLE Beacon Logger</string>
+    <string name="scanner_notification_channel_description">BLE Beacon Logger activity notification</string>
+
+</resources>

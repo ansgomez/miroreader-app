@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="pref_user_settings"
+        android:title="@string/pref_logging_settings_title">
+        <CheckBoxPreference
+            android:defaultValue="@bool/pref_logging_file_enable_default"
+            android:key="pref_logging_file_enable"
+            android:summary="@string/pref_logging_file_enable_summary"
+            android:title="@string/pref_logging_file_enable_title" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/pref_logging_aggressive_scan_enable_default"
+            android:key="pref_logging_aggressive_scan_enable"
+            android:summary="@string/pref_logging_aggressive_scan_enable_summary"
+            android:title="@string/pref_logging_aggressive_scan_enable_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_user_settings"
+        android:title="@string/pref_ui_settings_title">
+        <ListPreference
+            android:defaultValue="@string/pref_ui_max_age_default"
+            android:dialogTitle="@string/pref_ui_max_age_title"
+            android:entries="@array/pref_ui_max_age_entries"
+            android:entryValues="@array/pref_ui_max_age_values"
+            android:key="pref_ui_max_age"
+            android:title="@string/pref_ui_max_age_title" />
+        <ListPreference
+            android:defaultValue="@string/pref_ui_update_interval_default"
+            android:dialogTitle="@string/pref_ui_update_interval_title"
+            android:entries="@array/pref_ui_update_interval_entries"
+            android:entryValues="@array/pref_ui_update_interval_values"
+            android:key="pref_ui_update_interval"
+            android:title="@string/pref_ui_update_interval_title" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/pref_ui_keep_screen_on_default"
+            android:key="pref_ui_keep_screen_on"
+            android:summary="@string/pref_ui_keep_screen_on_summary"
+            android:title="@string/pref_ui_keep_screen_on_title" />
+        <CheckBoxPreference
+            android:defaultValue="@bool/pref_ui_decode_data_default"
+            android:key="pref_ui_decode_data"
+            android:summary="@string/pref_ui_decode_data_summary"
+            android:title="@string/pref_ui_decode_data_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_about_settings"
+        android:title="@string/pref_about_settings_title">
+        <EditTextPreference
+            android:defaultValue="@string/pref_about_version_default"
+            android:key="pref_about_version"
+            android:selectable="false"
+            android:title="@string/pref_about_version_title" />
+        <EditTextPreference
+            android:defaultValue="@string/pref_about_git_revision_default"
+            android:key="pref_about_git_revision"
+            android:selectable="false"
+            android:title="@string/pref_about_git_revision_title" />
+    </PreferenceCategory>
+</PreferenceScreen>
