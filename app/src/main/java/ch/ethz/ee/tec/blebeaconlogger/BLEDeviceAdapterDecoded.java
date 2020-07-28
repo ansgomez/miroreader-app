@@ -80,7 +80,6 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             if ( (messageType & LIGHT) == LIGHT) {
                 int light_raw = (data[8] & 0xFF) | ((data[9] & 0xFF) << 8);
                 float light = (float) light_raw / 10;
-//                Log.d(TAG,String.format("Raw Light: %d lx", light_raw));
                 holder.luminosity.setText(String.format("%.1f lx", light));
             }
             if ( (messageType & ACC) == ACC) {
@@ -90,13 +89,6 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                 float accX = -2.0f + (float) (accX_raw) / 100.0f;
                 float accY = -2.0f + (float) (accY_raw) / 100.0f;
                 float accZ = -2.0f + (float) (accZ_raw) / 100.0f;
-                Log.d(TAG,String.format("1st Half Y: %02X ", (data[11])));
-                Log.d(TAG,String.format("2nd Half Y: %02X ", (data[12])));
-                Log.d(TAG,String.format("1st Half Z: %02X ", (data[12])));
-                Log.d(TAG,String.format("2nd Half Z: %02X ", (data[13])));
-                Log.d(TAG,String.format("Raw X: %d ", accX_raw));
-                Log.d(TAG,String.format("Raw Y: %d ", accY_raw));
-                Log.d(TAG,String.format("Raw Z: %d ", accZ_raw));
                 holder.accX.setText(String.format("X:%.2f g",accX));
                 holder.accY.setText(String.format("Y:%.2f g",accY));
                 holder.accZ.setText(String.format("Z:%.2f g",accZ));
