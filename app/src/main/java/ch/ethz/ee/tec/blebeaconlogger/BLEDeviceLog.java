@@ -16,7 +16,7 @@ public class BLEDeviceLog {
 
     private ArrayList<BLEDevice> deviceHistory = new ArrayList<>();
 
-    private long deviceMaxAge = 0;
+    private long deviceMaxAge = 50000000000L;
 
     private File logFile = null;
 
@@ -119,7 +119,7 @@ public class BLEDeviceLog {
             // drop device entry, if too old
             if (d.getTimestamp() > 0 && this.deviceMaxAge > 0) {
                 long age = System.nanoTime() - d.getTimestamp();
-                if (age > this.deviceMaxAge) {
+                if (age/10 > this.deviceMaxAge) {
                     devices.remove(i);
                     Log.d(TAG, "drop device: " + d.getAddress());
                 }

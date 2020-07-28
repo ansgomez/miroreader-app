@@ -13,6 +13,11 @@ import java.util.List;
 public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapterDecoded.ViewHolder> {
     protected static final String TAG = "BLEDeviceAdapterDecoded";
 
+    public static final int ALL     = 0xFF;
+    public static final int TEMP_RH = 0x01;
+    public static final int LIGHT   = 0x02;
+    public static final int ACC     = 0x04;
+
     /**
      * List of Bluetooth Low Energy devices
      */
@@ -48,25 +53,63 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             holder.temperature.setText("N/A");
             holder.humidity.setText("N/A");
             holder.time.setText("N/A");
-        } else if (data.length == 7) {
+        } else if (data.length > 5) {
             Log.d(TAG, data.toString());
+            char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+            char[] hexChars = new char[data.length * 2];
+            for (int j = 0; j < data.length; j++) {
+                int v = data[j] & 0xFF;
+                hexChars[j * 2] = HEX_ARRAY[v >>> 4];
+                hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+            }
+            Log.d(TAG, new String(hexChars));
 
-            // decode data
-            long timestamp_raw = (data[0] & 0xFF) | ((data[1] & 0xFF) << 8) |
-                    ((data[2] & 0xFF) << 16) | ((data[3] & 0xFF) << 24);
-            int humidity_raw = (data[4] & 0xFF) | (((int) data[5] & 0x03) << 8);
-            int temperature_raw = ((data[5] & 0xFC) >> 2) | ((data[6] & 0xFF) << 6);
+            int timestamp_raw = ((data[0] & 0xFF) | ((data[1] & 0xFF) << 8)
+                                | ((data[2] & 0xFF) << 16) | ((data[3] & 0xFF) << 24));
+            int messageType = (data[4] & 0xFF);
 
-            // conversion
-            float temperature = -40.0f + (float) temperature_raw / 100.0f;
-            float humidity = (float) humidity_raw / 10.0f;
+            // decode and convert data
+            if ( (messageType & TEMP_RH) == TEMP_RH) {
+                int humidity_raw = (data[5] & 0xFF) | (((int) data[6] & 0x03) << 8);
+                int temperature_raw = ((data[6] & 0xFC) >> 2) | ((data[7] & 0xFF) << 6);
+                float temperature = -40.0f + (float) temperature_raw / 100.0f;
+                float humidity = (float) humidity_raw / 10.0f;
+                holder.temperature.setText(String.format("%+7.2f °C", temperature));
+                holder.humidity.setText(String.format("%5.1f %%RH", humidity));
+            }
+            if ( (messageType & LIGHT) == LIGHT) {
+                int light_raw = (data[8] & 0xFF) | ((data[9] & 0xFF) << 8);
+                float light = (float) light_raw / 10;
+//                Log.d(TAG,String.format("Raw Light: %d lx", light_raw));
+                holder.luminosity.setText(String.format("%.1f lx", light));
+            }
+            if ( (messageType & ACC) == ACC) {
+                int accX_raw = (data[10] & 0xFF) | ((data[11] & 0x03) << 8);
+                int accY_raw = ((data[11] & 0xFF) >> 2) | (( data[12] & 0xF0) << 2);
+                int accZ_raw = ((data[12] & 0x0F)) | (( data[13] & 0xFF) << 4);
+                float accX = -2.0f + (float) (accX_raw) / 100.0f;
+                float accY = -2.0f + (float) (accY_raw) / 100.0f;
+                float accZ = -2.0f + (float) (accZ_raw) / 100.0f;
+                Log.d(TAG,String.format("1st Half Y: %02X ", (data[11])));
+                Log.d(TAG,String.format("2nd Half Y: %02X ", (data[12])));
+                Log.d(TAG,String.format("1st Half Z: %02X ", (data[12])));
+                Log.d(TAG,String.format("2nd Half Z: %02X ", (data[13])));
+                Log.d(TAG,String.format("Raw X: %d ", accX_raw));
+                Log.d(TAG,String.format("Raw Y: %d ", accY_raw));
+                Log.d(TAG,String.format("Raw Z: %d ", accZ_raw));
+                holder.accX.setText(String.format("X:%.2f g",accX));
+                holder.accY.setText(String.format("Y:%.2f g",accY));
+                holder.accZ.setText(String.format("Z:%.2f g",accZ));
+            }
 
-            holder.temperature.setText(String.format("%+7.2f °C", temperature));
-            holder.humidity.setText(String.format("%5.1f %%RH", humidity));
             holder.time.setText(String.format("%08x", timestamp_raw));
         } else {
             holder.temperature.setText("err");
             holder.humidity.setText("err");
+            holder.luminosity.setText("err");
+            holder.accX.setText("err");
+            holder.accY.setText("err");
+            holder.accZ.setText("err");
             holder.time.setText("err");
         }
 
@@ -88,7 +131,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
      * Provide a reference to the type of views that you are using (custom ViewHolder)
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, address, temperature, humidity, time, rssi, timestamp;
+        public TextView name, address, temperature, humidity, luminosity, accX, accY, accZ, time, rssi, timestamp;
 
         public ViewHolder(View view) {
             super(view);
@@ -97,6 +140,10 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             address = view.findViewById(R.id.address);
             temperature = view.findViewById(R.id.temperature);
             humidity = view.findViewById(R.id.humidity);
+            luminosity = view.findViewById(R.id.luminosity);
+            accX = view.findViewById(R.id.accX);
+            accY = view.findViewById(R.id.accY);
+            accZ = view.findViewById(R.id.accZ);
             time = view.findViewById(R.id.time);
             rssi = view.findViewById(R.id.rssi);
             timestamp = view.findViewById(R.id.timestamp);

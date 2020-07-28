@@ -9,6 +9,7 @@ import android.os.SystemClock;
 public class BLEDevice {
     protected static final String TAG = "BLEDevice";
 
+    protected final int DATA_SIZE = 14;
     protected String name;
     protected String address;
     protected String data;
@@ -84,10 +85,11 @@ public class BLEDevice {
     }
 
     public byte[] getDataRaw() {
-        if (data_raw.length < 10) {
+        // Header: 3bytes + Timestamp: 4 bytes + MSGTYPE: 1 bytes
+        if (data_raw.length < 9) {
             return null;
         }
-        byte[] data_block = new byte[7];
+        byte[] data_block = new byte[DATA_SIZE];
         for (int i = 0; i < data_block.length; i++) {
             data_block[i] = this.data_raw[3 + i];
         }
