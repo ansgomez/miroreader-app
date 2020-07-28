@@ -119,7 +119,7 @@ public class BLEDeviceLog {
             // drop device entry, if too old
             if (d.getTimestamp() > 0 && this.deviceMaxAge > 0) {
                 long age = System.nanoTime() - d.getTimestamp();
-                if (age/10 > this.deviceMaxAge) {
+                if (age > this.deviceMaxAge) {
                     devices.remove(i);
                     Log.d(TAG, "drop device: " + d.getAddress());
                 }
