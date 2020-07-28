@@ -1,7 +1,7 @@
 <resources>
     <!-- Strings related to Application -->
 
-    <string name="app_name">MiroTag Reader</string>
+    <string name="app_name">MiroReader</string>
     <string name="title_activity_monitoring">MonitoringActivity</string>
     <string name="element_text">Beacon Row</string>
     <string name="placeholder_name">{name}</string>
