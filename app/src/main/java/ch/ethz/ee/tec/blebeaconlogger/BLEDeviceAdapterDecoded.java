@@ -74,8 +74,8 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             if(timestamp_raw == 0xFDFCFBFA) {
                 if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
                     name = "Andres' MiroCard";
-                    holder.temperature.setText("Account");
-                    holder.humidity.setText("created:");
+                    holder.temperature.setText("Member");
+                    holder.humidity.setText("since:");
                     holder.luminosity.setText("13.08.2020");
                     holder.accX.setText("");
                     holder.accY.setText("");
@@ -83,10 +83,10 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.time.setText("Platinum Member");
 
                     holder.avatar.setImageResource(R.drawable.profile_ag);
-                } else if ( "18:04:ED:61:67:2E".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
+                } else if ( "18:04:ED:61:67:4B".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
                     name = "Kevin's MiroCard";
-                    holder.temperature.setText("Account");
-                    holder.humidity.setText("created:");
+                    holder.temperature.setText("Member");
+                    holder.humidity.setText("since:");
                     holder.luminosity.setText("13.08.2020");
                     holder.accX.setText("");
                     holder.accY.setText("");
