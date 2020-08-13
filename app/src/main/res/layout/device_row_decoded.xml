@@ -10,14 +10,28 @@
     android:gravity="center_vertical"
     android:maxHeight="90dp">
 
+    <ImageView
+        android:id="@+id/imageViewAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="avatar"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/name"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
     <TextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
         android:text="@string/placeholder_name"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/address"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -34,8 +48,9 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
+        android:paddingLeft="5dp"
         android:text="@string/placeholder_temperature"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
@@ -65,11 +80,10 @@
         android:id="@+id/accX"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:fontFamily="monospace"
+        android:paddingLeft="5dp"
         android:text="@string/placeholder_acc"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
         app:layout_constraintTop_toBottomOf="@+id/temperature" />
 
     <TextView
@@ -101,14 +115,15 @@
         android:id="@+id/time"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="monospace"
+        android:paddingLeft="5dp"
         android:text="@string/placeholder_time"
         android:typeface="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/timestamp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
         app:layout_constraintTop_toBottomOf="@+id/accX" />
 
     <TextView

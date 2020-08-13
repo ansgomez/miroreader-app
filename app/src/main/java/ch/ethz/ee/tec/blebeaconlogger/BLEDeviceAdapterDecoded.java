@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -80,6 +81,8 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.accY.setText("");
                     holder.accZ.setText("");
                     holder.time.setText("Platinum Customer");
+
+                    holder.avatar.setImageResource(R.drawable.profile_ag);
                 } else if ("18:04:ED:61:66:71".equalsIgnoreCase(address.trim())) {
                     name = "Kevin Luchsinger's Miro Card";
                     holder.temperature.setText("Account");
@@ -89,6 +92,10 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.accY.setText("");
                     holder.accZ.setText("");
                     holder.time.setText("Gold Customer");
+
+                    holder.avatar.setImageResource(R.drawable.profile_kl);
+                } else {
+                    holder.avatar.setImageResource(R.drawable.profile_default);
                 }
             }
             else if(timestamp_raw != 0xABABABAB) {
@@ -165,6 +172,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name, address, temperature, humidity, luminosity, accX, accY, accZ, time, rssi, timestamp;
+        public ImageView avatar;
 
         public ViewHolder(View view) {
             super(view);
@@ -180,6 +188,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             time = view.findViewById(R.id.time);
             rssi = view.findViewById(R.id.rssi);
             timestamp = view.findViewById(R.id.timestamp);
+            avatar = view.findViewById(R.id.imageViewAvatar);
 
             // Define click listener for the ViewHolder's View.
             view.setOnClickListener(new View.OnClickListener() {
