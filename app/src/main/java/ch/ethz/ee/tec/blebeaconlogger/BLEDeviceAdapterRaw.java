@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -55,6 +56,16 @@ public class BLEDeviceAdapterRaw extends RecyclerView.Adapter<BLEDeviceAdapterRa
         }
         holder.rssi.setText(String.format("%d", device.getRssi()));
         holder.timestamp.setText(String.format("%d", device.getTimestamp()));
+
+        if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
+            //name = "Andres Gomez' Miro Card";
+            holder.avatar.setImageResource(R.drawable.profile_ag);
+        } else if ("18:04:ED:61:66:71".equalsIgnoreCase(address.trim())) {
+            //name = "Kevin Luchsinger's Miro Card";
+            holder.avatar.setImageResource(R.drawable.profile_kl);
+        } else {
+            holder.avatar.setImageResource(R.drawable.profile_default);
+        }
     }
 
     @Override
@@ -67,6 +78,7 @@ public class BLEDeviceAdapterRaw extends RecyclerView.Adapter<BLEDeviceAdapterRa
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name, address, data, rssi, timestamp;
+        public ImageView avatar;
 
         public ViewHolder(View view) {
             super(view);
@@ -76,6 +88,7 @@ public class BLEDeviceAdapterRaw extends RecyclerView.Adapter<BLEDeviceAdapterRa
             data = view.findViewById(R.id.data);
             rssi = view.findViewById(R.id.rssi);
             timestamp = view.findViewById(R.id.timestamp);
+            avatar = view.findViewById(R.id.imageViewAvatar);
 
             // Define click listener for the ViewHolder's View.
             view.setOnClickListener(new View.OnClickListener() {
