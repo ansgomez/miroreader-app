@@ -67,18 +67,29 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             int timestamp_raw = ((data[0] & 0xFF) | ((data[1] & 0xFF) << 8)
                                 | ((data[2] & 0xFF) << 16) | ((data[3] & 0xFF) << 24));
 
-            String message = "Found tiemstamp" + timestamp_raw;
+            String message = "Found timestamp 0x" + String.format("%08x", timestamp_raw);
             Log.d(TAG, message);
 
-            if(timestamp_raw != 0xFAFBFCFD) {
-                name = "Andres Gomez Miro Card";
-                holder.temperature.setText("Account");
-                holder.humidity.setText("created:");
-                holder.luminosity.setText("13.08.2020");
-                holder.accX.setText("");
-                holder.accY.setText("");
-                holder.accZ.setText("");
-                holder.time.setText("Gold Costumer");
+            if(timestamp_raw == 0xFDFCFBFA) {
+                if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
+                    name = "Andres Gomez' Miro Card";
+                    holder.temperature.setText("Account");
+                    holder.humidity.setText("created:");
+                    holder.luminosity.setText("13.08.2020");
+                    holder.accX.setText("");
+                    holder.accY.setText("");
+                    holder.accZ.setText("");
+                    holder.time.setText("Platinum Customer");
+                } else if ("18:04:ED:61:66:71".equalsIgnoreCase(address.trim())) {
+                    name = "Kevin Luchsinger's Miro Card";
+                    holder.temperature.setText("Account");
+                    holder.humidity.setText("created:");
+                    holder.luminosity.setText("13.08.2020");
+                    holder.accX.setText("");
+                    holder.accY.setText("");
+                    holder.accZ.setText("");
+                    holder.time.setText("Gold Customer");
+                }
             }
             else if(timestamp_raw != 0xABABABAB) {
                 //OLD DATA FORMAT
