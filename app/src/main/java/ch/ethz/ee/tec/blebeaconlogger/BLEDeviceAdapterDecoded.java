@@ -73,25 +73,25 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
 
             if(timestamp_raw == 0xFDFCFBFA) {
                 if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
-                    name = "Andres Gomez' Miro Card";
+                    name = "Andres' MiroCard";
                     holder.temperature.setText("Account");
                     holder.humidity.setText("created:");
                     holder.luminosity.setText("13.08.2020");
                     holder.accX.setText("");
                     holder.accY.setText("");
                     holder.accZ.setText("");
-                    holder.time.setText("Platinum Customer");
+                    holder.time.setText("Platinum Member");
 
                     holder.avatar.setImageResource(R.drawable.profile_ag);
-                } else if ("18:04:ED:61:66:71".equalsIgnoreCase(address.trim())) {
-                    name = "Kevin Luchsinger's Miro Card";
+                } else if ( "18:04:ED:61:67:2E".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
+                    name = "Kevin's MiroCard";
                     holder.temperature.setText("Account");
                     holder.humidity.setText("created:");
                     holder.luminosity.setText("13.08.2020");
                     holder.accX.setText("");
                     holder.accY.setText("");
                     holder.accZ.setText("");
-                    holder.time.setText("Gold Customer");
+                    holder.time.setText("Gold Member");
 
                     holder.avatar.setImageResource(R.drawable.profile_kl);
                 } else {
@@ -108,8 +108,13 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                 float humidity = (float) humidity_raw / 10.0f;
 
                 holder.temperature.setText(String.format("%+7.2f °C", temperature));
+                holder.luminosity.setText("");
                 holder.humidity.setText(String.format("%5.1f %%RH", humidity));
+                holder.accX.setText("");
+                holder.accY.setText("");
+                holder.accZ.setText("");
                 holder.time.setText(String.format("%08x", timestamp_raw));
+                holder.avatar.setImageResource(R.drawable.profile_default);
             }
             else {
                 //NEW DATA FORMAT
@@ -141,6 +146,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.accZ.setText(String.format("Z:%.2f g", accZ));
                 }
 
+                holder.avatar.setImageResource(R.drawable.profile_default);
                 holder.time.setText(String.format("%08x", timestamp_raw));
             }
         } else {
