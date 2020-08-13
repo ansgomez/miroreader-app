@@ -48,7 +48,16 @@
         <item>#18 (0C:61:CF:E0:A0:02)</item>
         <item>#19 (0C:61:CF:E0:9A:02)</item>
         <item>#20 (0C:61:CF:E0:86:02)</item>
-        <item>#21 (18:04:ED:61:66:51)</item>
+        <item>#21 (18:04:ED:61:66:6C)</item>
+        <item>#22 (18:04:ED:61:67:4B)</item>
+        <item>#23 (18:04:ED:61:66:1E)</item>
+        <item>#24 (18:04:ED:61:66:51)</item>
+        <item>#25 (18:04:ED:61:66:4D)</item>
+        <item>#26 (18:04:ED:61:66:7C)</item>
+        <item>#27 (18:04:ED:61:66:3D)</item>
+        <item>#28 (18:04:ED:61:66:71)</item>
+        <item>#29 (18:04:ED:61:66:40)</item>
+        <item>#30 (18:04:ED:61:67:2E)</item>
         <item>#21X (18:04:ED:61:*)</item>
     </string-array>
     <string-array name="ble_filter_values">
@@ -76,7 +85,16 @@
         <item>0C:61:CF:E0:A0:02</item>
         <item>0C:61:CF:E0:9A:02</item>
         <item>0C:61:CF:E0:86:02</item>
+        <item>18:04:ED:61:66:6C</item>
+        <item>18:04:ED:61:67:4B</item>
+        <item>18:04:ED:61:66:1E</item>
         <item>18:04:ED:61:66:51</item>
+        <item>18:04:ED:61:66:4D</item>
+        <item>18:04:ED:61:66:7C</item>
+        <item>18:04:ED:61:66:3D</item>
+        <item>18:04:ED:61:66:71</item>
+        <item>18:04:ED:61:66:40</item>
+        <item>18:04:ED:61:67:2E</item>
         <item>18:04:ED:61:*</item>
     </string-array>
 

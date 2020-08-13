@@ -66,35 +66,65 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
 
             int timestamp_raw = ((data[0] & 0xFF) | ((data[1] & 0xFF) << 8)
                                 | ((data[2] & 0xFF) << 16) | ((data[3] & 0xFF) << 24));
-            int messageType = (data[4] & 0xFF);
 
-            // decode and convert data
-            if ( (messageType & TEMP_RH) == TEMP_RH) {
-                int humidity_raw = (data[5] & 0xFF) | (((int) data[6] & 0x03) << 8);
-                int temperature_raw = ((data[6] & 0xFC) >> 2) | ((data[7] & 0xFF) << 6);
+            String message = "Found tiemstamp" + timestamp_raw;
+            Log.d(TAG, message);
+
+            if(timestamp_raw != 0xFAFBFCFD) {
+                name = "Andres Gomez Miro Card";
+                holder.temperature.setText("Account");
+                holder.humidity.setText("created:");
+                holder.luminosity.setText("13.08.2020");
+                holder.accX.setText("");
+                holder.accY.setText("");
+                holder.accZ.setText("");
+                holder.time.setText("Gold Costumer");
+            }
+            else if(timestamp_raw != 0xABABABAB) {
+                //OLD DATA FORMAT
+                int humidity_raw = (data[4] & 0xFF) | (((int) data[5] & 0x03) << 8);
+                int temperature_raw = ((data[5] & 0xFC) >> 2) | ((data[6] & 0xFF) << 6);
+
+                // conversion
                 float temperature = -40.0f + (float) temperature_raw / 100.0f;
                 float humidity = (float) humidity_raw / 10.0f;
+
                 holder.temperature.setText(String.format("%+7.2f °C", temperature));
                 holder.humidity.setText(String.format("%5.1f %%RH", humidity));
+                holder.time.setText(String.format("%08x", timestamp_raw));
             }
-            if ( (messageType & LIGHT) == LIGHT) {
-                int light_raw = (data[8] & 0xFF) | ((data[9] & 0xFF) << 8);
-                float light = (float) light_raw / 10;
-                holder.luminosity.setText(String.format("%.1f lx", light));
-            }
-            if ( (messageType & ACC) == ACC) {
-                int accX_raw = (data[10] & 0xFF) | ((data[11] & 0x03) << 8);
-                int accY_raw = ((data[11] & 0xFF) >> 2) | (( data[12] & 0xF0) << 2);
-                int accZ_raw = ((data[12] & 0x0F)) | (( data[13] & 0xFF) << 4);
-                float accX = -2.0f + (float) (accX_raw) / 100.0f;
-                float accY = -2.0f + (float) (accY_raw) / 100.0f;
-                float accZ = -2.0f + (float) (accZ_raw) / 100.0f;
-                holder.accX.setText(String.format("X:%.2f g",accX));
-                holder.accY.setText(String.format("Y:%.2f g",accY));
-                holder.accZ.setText(String.format("Z:%.2f g",accZ));
-            }
+            else {
+                //NEW DATA FORMAT
+                int messageType = (data[4] & 0xFF);
 
-            holder.time.setText(String.format("%08x", timestamp_raw));
+                // decode and convert data
+                if ((messageType & TEMP_RH) == TEMP_RH) {
+                    int humidity_raw = (data[5] & 0xFF) | (((int) data[6] & 0x03) << 8);
+                    int temperature_raw = ((data[6] & 0xFC) >> 2) | ((data[7] & 0xFF) << 6);
+                    float temperature = -40.0f + (float) temperature_raw / 100.0f;
+                    float humidity = (float) humidity_raw / 10.0f;
+                    holder.temperature.setText(String.format("%+7.2f °C", temperature));
+                    holder.humidity.setText(String.format("%5.1f %%RH", humidity));
+                }
+                if ((messageType & LIGHT) == LIGHT) {
+                    int light_raw = (data[8] & 0xFF) | ((data[9] & 0xFF) << 8);
+                    float light = (float) light_raw / 10;
+                    holder.luminosity.setText(String.format("%.1f lx", light));
+                }
+                if ((messageType & ACC) == ACC) {
+                    int accX_raw = (data[10] & 0xFF) | ((data[11] & 0x03) << 8);
+                    int accY_raw = ((data[11] & 0xFF) >> 2) | ((data[12] & 0xF0) << 2);
+                    int accZ_raw = ((data[12] & 0x0F)) | ((data[13] & 0xFF) << 4);
+                    float accX = -2.0f + (float) (accX_raw) / 100.0f;
+                    float accY = -2.0f + (float) (accY_raw) / 100.0f;
+                    float accZ = -2.0f + (float) (accZ_raw) / 100.0f;
+                    holder.accX.setText(String.format("X:%.2f g", accX));
+                    holder.accY.setText(String.format("Y:%.2f g", accY));
+                    holder.accZ.setText(String.format("Z:%.2f g", accZ));
+                }
+
+                holder.time.setText(String.format("%08x", timestamp_raw));
+            }
         } else {
             holder.temperature.setText("err");
             holder.humidity.setText("err");
