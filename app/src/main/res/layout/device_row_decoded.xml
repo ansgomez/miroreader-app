@@ -45,7 +45,7 @@
 
     <TextView
         android:id="@+id/temperature"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
         android:paddingLeft="5dp"
@@ -55,7 +55,7 @@
 
     <TextView
         android:id="@+id/humidity"
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -67,7 +67,7 @@
 
     <TextView
         android:id="@+id/luminosity"
-        android:layout_width="100dp"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
