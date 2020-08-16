@@ -74,23 +74,23 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             if(timestamp_raw == 0xFDFCFBFA) {
                 if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
                     name = "Andres' MiroCard";
-                    holder.temperature.setText("Member");
-                    holder.humidity.setText("since:");
-                    holder.luminosity.setText("13.08.2020");
-                    holder.accX.setText("");
-                    holder.accY.setText("");
-                    holder.accZ.setText("");
+                    holder.temperature.setText("");
+                    holder.humidity.setText("");
+                    holder.luminosity.setText("");
+                    holder.accX.setText("Member");
+                    holder.accY.setText("since:");
+                    holder.accZ.setText("13.08.2020");
                     holder.time.setText("Platinum Member");
 
                     holder.avatar.setImageResource(R.drawable.profile_ag);
                 } else if ( "18:04:ED:61:67:4B".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
                     name = "Kevin's MiroCard";
-                    holder.temperature.setText("Member");
-                    holder.humidity.setText("since:");
-                    holder.luminosity.setText("13.08.2020");
-                    holder.accX.setText("");
-                    holder.accY.setText("");
-                    holder.accZ.setText("");
+                    holder.temperature.setText("");
+                    holder.humidity.setText("");
+                    holder.luminosity.setText("");
+                    holder.accX.setText("Member");
+                    holder.accY.setText("since:");
+                    holder.accZ.setText("13.08.2020");
                     holder.time.setText("Gold Member");
 
                     holder.avatar.setImageResource(R.drawable.profile_kl);
@@ -99,6 +99,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                 }
             }
             else if(timestamp_raw != 0xABABABAB) {
+                name = "Meeting Room";
                 //OLD DATA FORMAT
                 int humidity_raw = (data[4] & 0xFF) | (((int) data[5] & 0x03) << 8);
                 int temperature_raw = ((data[5] & 0xFC) >> 2) | ((data[6] & 0xFF) << 6);
@@ -117,6 +118,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                 holder.avatar.setImageResource(R.drawable.profile_default);
             }
             else {
+                name = "MiroCard";
                 //NEW DATA FORMAT
                 int messageType = (data[4] & 0xFF);
 
