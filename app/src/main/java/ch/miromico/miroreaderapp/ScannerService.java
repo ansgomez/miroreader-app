@@ -50,7 +50,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ch.ethz.ee.tec.blebeaconlogger;
+package ch.miromico.miroreaderapp;
 
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -75,6 +75,8 @@ import android.util.Log;
 import java.io.File;
 import java.util.ArrayList;
 
+import ch.miromico.miroreaderapp.R;
+
 public class ScannerService extends Service {
     protected static final String TAG = "ScannerService";
     /**
@@ -82,7 +84,7 @@ public class ScannerService extends Service {
      * See also: https://github.com/AltBeacon/android-beacon-library/issues/512
      */
     protected static final long ANDROID_N_MAX_SCAN_DURATION = 30 * 60 * 1000l;
-    private static final String NOTIFICATION_CHANNEL_ID = "ch.ethz.ee.tec.blebeaconlogger.activity";
+    private static final String NOTIFICATION_CHANNEL_ID = "ch.miromico.miroreaderapp.activity";
 
     private final int SCANNER_NOTIFICATION_ID = 1;
     /**

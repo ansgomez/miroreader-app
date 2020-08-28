@@ -50,7 +50,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ch.ethz.ee.tec.blebeaconlogger;
+package ch.miromico.miroreaderapp;
 
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -68,6 +68,9 @@ import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
+import ch.miromico.miroreaderapp.BuildConfig;
+import ch.miromico.miroreaderapp.R;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On

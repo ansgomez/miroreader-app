@@ -14,7 +14,7 @@ android {
     def versionPatch = 0
 
     defaultConfig {
-        applicationId "ch.ethz.ee.tec.blebeaconlogger"
+        applicationId "ch.miromico.miroreaderapp"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

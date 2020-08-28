@@ -50,7 +50,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ch.ethz.ee.tec.blebeaconlogger;
+package ch.miromico.miroreaderapp;
 
 import android.util.Log;
 

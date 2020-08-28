@@ -50,7 +50,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ch.ethz.ee.tec.blebeaconlogger;
+package ch.miromico.miroreaderapp;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
@@ -62,6 +62,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import ch.miromico.miroreaderapp.R;
 
 public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapterDecoded.ViewHolder> {
     protected static final String TAG = "BLEDeviceAdapterDecoded";

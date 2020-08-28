@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ch.ethz.ee.tec.blebeaconlogger">
+    package="ch.miromico.miroreaderapp">
 
     <!-- Bluetooth and scanning in the background -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -24,11 +24,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".ScannerService"
+            android:name="ch.miromico.miroreaderapp.ScannerService"
             android:enabled="true"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="ch.miromico.miroreaderapp.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -39,13 +39,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name="ch.miromico.miroreaderapp.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName="ch.miromico.miroreaderapp.MainActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ch.ethz.ee.tec.blebeaconlogger.MainActivity" />
+                android:value="ch.miromico.miroreaderapp.ch.ethz.ee.tec.miroreaderapp.MainActivity" />
         </activity>
     </application>
 

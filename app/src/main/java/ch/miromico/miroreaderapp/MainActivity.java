@@ -50,7 +50,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package ch.ethz.ee.tec.blebeaconlogger;
+package ch.miromico.miroreaderapp;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -89,6 +89,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+
+import ch.miromico.miroreaderapp.R;
 
 public class MainActivity extends AppCompatActivity {
     protected static final String TAG = "MainActivity";

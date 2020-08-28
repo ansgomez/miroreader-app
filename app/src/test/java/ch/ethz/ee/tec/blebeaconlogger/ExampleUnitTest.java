@@ -1,4 +1,4 @@
-package ch.ethz.ee.tec.blebeaconlogger;
+package ch.miromico.miroreaderapp;
 
 import org.junit.Test;
 
