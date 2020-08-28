@@ -36,6 +36,12 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
         return new ViewHolder(view);
     }
 
+    /**
+     * This function updates the UI with data from the latest received packet
+     * @param holder
+     * @param position
+     */
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         BLEDevice device = devicesList.get(position);
@@ -45,6 +51,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
 
         String name = device.getName();
 
+        //Update text labels based on packet data
         if (address != null) {
             holder.address.setText(address);
         } else {
@@ -55,6 +62,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             holder.humidity.setText("N/A");
             holder.time.setText("N/A");
         } else if (data.length > 5) {
+            //Assume there is parseable data
             Log.d(TAG, data.toString());
             char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
             char[] hexChars = new char[data.length * 2];
@@ -71,8 +79,11 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             String message = "Found timestamp 0x" + String.format("%08x", timestamp_raw);
             Log.d(TAG, message);
 
+            //This is a special key used in the MiroCard prototypes
             if(timestamp_raw == 0xFDFCFBFA) {
+                //Hard coded mac address for Andres' card
                 if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
+                    //Update UI with hardcoded data
                     name = "Andres' MiroCard";
                     holder.temperature.setText("");
                     holder.humidity.setText("");
@@ -83,7 +94,10 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.time.setText("Platinum Member");
 
                     holder.avatar.setImageResource(R.drawable.profile_ag);
-                } else if ( "18:04:ED:61:67:4B".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
+                }
+                //Hard coded value for Kevin's card
+                else if ( "18:04:ED:61:67:4B".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
+                    //Update UI with hardcoded data
                     name = "Kevin's MiroCard";
                     holder.temperature.setText("");
                     holder.humidity.setText("");
@@ -98,7 +112,9 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.avatar.setImageResource(R.drawable.profile_default);
                 }
             }
+            //If timestamp is not a MiroCard Sensor, then assume it is a Transient BLE Sensor V2
             else if(timestamp_raw != 0xABABABAB) {
+                //Update UI with sensor values
                 name = "Meeting Room";
                 //OLD DATA FORMAT
                 int humidity_raw = (data[4] & 0xFF) | (((int) data[5] & 0x03) << 8);
@@ -117,7 +133,9 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                 holder.time.setText(String.format("%08x", timestamp_raw));
                 holder.avatar.setImageResource(R.drawable.profile_default);
             }
+            //Miromico sensors should have the following timestamp: 0xABABABAB
             else {
+                //Update UI values with sensor data
                 name = "MiroCard";
                 //NEW DATA FORMAT
                 int messageType = (data[4] & 0xFF);
