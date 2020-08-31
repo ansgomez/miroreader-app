@@ -39,7 +39,7 @@
             android:summary="@string/pref_ui_keep_screen_on_summary"
             android:title="@string/pref_ui_keep_screen_on_title" />
         <CheckBoxPreference
-            android:defaultValue="@bool/pref_ui_decode_data_default"
+            android:defaultValue="true"
             android:key="pref_ui_decode_data"
             android:summary="@string/pref_ui_decode_data_summary"
             android:title="@string/pref_ui_decode_data_title" />
