@@ -136,7 +136,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             //This is a special key used in the MiroCard prototypes
             if(timestamp_raw == 0xFDFCFBFA) {
                 //Hard coded mac address for Andres' card
-                if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim())) {
+                if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:5D".equalsIgnoreCase(address.trim()) || "18:04:ED:61:67:2B".equalsIgnoreCase(address.trim())) {
                     //Update UI with hardcoded data
                     name = "Andres' MiroCard";
                     holder.temperature.setText("");
