@@ -136,7 +136,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
             //This is a special key used in the MiroCard prototypes
             if(timestamp_raw == 0xFDFCFBFA) {
                 //Hard coded mac address for Andres' card
-                if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:5D".equalsIgnoreCase(address.trim()) || "18:04:ED:61:67:2B".equalsIgnoreCase(address.trim())) {
+                if ("18:04:ED:61:66:3D".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:51".equalsIgnoreCase(address.trim()) || "18:04:ED:61:67:6C".equalsIgnoreCase(address.trim())) {
                     //Update UI with hardcoded data
                     name = "Andres' MiroCard";
                     holder.temperature.setText("");
@@ -150,7 +150,7 @@ public class BLEDeviceAdapterDecoded extends RecyclerView.Adapter<BLEDeviceAdapt
                     holder.avatar.setImageResource(R.drawable.profile_ag);
                 }
                 //Hard coded value for Kevin's card
-                else if ( "18:04:ED:61:67:4B".equalsIgnoreCase(address.trim()) || "18:04:ED:61:66:1E".equalsIgnoreCase(address.trim())) {
+                else if ( "18:04:ED:61:67:2B".equalsIgnoreCase(address.trim()) || "18:04:ED:61:67:0C".equalsIgnoreCase(address.trim())) {
                     //Update UI with hardcoded data
                     name = "Kevin's MiroCard";
                     holder.temperature.setText("");
