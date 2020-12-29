@@ -18,15 +18,29 @@ Apart from scanning for BLE beacons, the application does not access any locatio
 
 2. Filter BLE devices to process. The list entries and corresponding MAC addresses can be configured in the `app/src/main/res/values/strings.xml` file by extending/modifying the `ble_filter_entries` and `ble_filter_values` lists.
 
-3. List of recently received BLE beacons. Display duration and decoding of the transient BLE node data can be configured in the settings.
+3. List of recently received BLE beacons. Display duration and decoding of the transient BLE node data can be configured in the settings. Depending on where the MiroCard is assigned to a person or a location, the data is visualized differently. 
    
-   Data displayed (top to bottom, left to right):
+   Data displayed for personal MiroCards
+   - User picture 
+   - User name and info 
+   - Sender MAC address
+   - Received signal strength indicator (RSSI)
+   - Local timestamp (nanoseconds from arbitrary reference, see Java's `System.nanoTime()` documentation)
+
+   Data displayed for non-personal MiroCards:
+   - Bluetooth icon
    - Device name (if available)
    - Decoded data and sender timestamp (hex string) when decoding or raw payload data (hex string)
    - Sender MAC address
    - Received signal strength indicator (RSSI)
    - Local timestamp (nanoseconds from arbitrary reference, see Java's `System.nanoTime()` documentation)
-  
+
 4. Settings: configure BLE scan mode, data decoding, enable/disable logging to file, and more.
 
 ![Application Screenshot](screenshot.svg)
+
+## Contributors
+
+* Lukas Sigrist
+* Kevin Luchsinger
+* Andres Gomez
